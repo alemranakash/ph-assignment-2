@@ -14,4 +14,10 @@ router.get('/', ProductController.getAllProducts);
 //* Get method to get a product by ID
 router.get('/:productId', ProductController.getProductById);
 
+//* Put method to update a product by ID
+router.put('/:productId', ProductController.updateProduct);
+
+//* Delete method to delete a product by ID
+router.delete('/:productId', ProductController.deleteProduct);
+
 export const ProductRoutes = router;

@@ -33,8 +33,35 @@ const getProductById = async (id: string) => {
   };
 
 
+
+  //* Update a product by ID
+const updateProduct = async (id: string, payload: Product) => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error('Invalid ID format');
+    }
+    const result = await ProductCollection.findByIdAndUpdate(id, payload, {
+      new: true,
+      runValidators: true,
+    });
+    return result;
+  };
+
+
+
+
+  //* Delete a product by ID
+const deleteProduct = async (id: string) => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error('Invalid ID format');
+    }
+    const result = await ProductCollection.findByIdAndDelete(id);
+    return result;
+  };
+
 export const ProductServices = {
     createProduct,
     getAllProducts,
-    getProductById
+    getProductById,
+    updateProduct,
+    deleteProduct,
 }

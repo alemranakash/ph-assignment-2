@@ -34,7 +34,7 @@ const result = await ProductServices.createProduct(productData);
   }
   }
 
-// Get method to get a product by ID
+//* Get method to get a product by ID
 const getProductById = async (req: Request, res: Response) => {
     try {
       const { productId } = req.params;
@@ -60,8 +60,66 @@ const getProductById = async (req: Request, res: Response) => {
     }
   };
 
+//* Put method to update a product by ID
+const updateProduct = async (req: Request, res: Response) => {
+    try {
+      const { productId } = req.params;
+      const productData = req.body;
+      const result = await ProductServices.updateProduct(productId, productData);
+      if (result) {
+        res.status(200).json({
+          success: true,
+          message: 'Product updated successfully!',
+          data: result,
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: 'Product not found',
+        });
+      }
+    } catch (err: any) {
+      res.status(500).json({
+        success: false,
+        message: 'Something went wrong',
+        error: err,
+      });
+    }
+  };
+
+
+
+  //* Delete method to delete a product by ID
+const deleteProduct = async (req: Request, res: Response) => {
+    try {
+      const { productId } = req.params;
+      const result = await ProductServices.deleteProduct(productId);
+      if (result) {
+        res.status(200).json({
+          success: true,
+          message: 'Product deleted successfully!',
+          data: null,
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: 'Product not found',
+        });
+      }
+    } catch (err: any) {
+      res.status(500).json({
+        success: false,
+        message: 'Something went wrong',
+        error: err,
+      });
+    }
+  };
+
+
   export const ProductController = {
     createProduct,
     getAllProducts,
-    getProductById
+    getProductById,
+    updateProduct,
+    deleteProduct,
   }
