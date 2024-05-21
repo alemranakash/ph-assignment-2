@@ -17,6 +17,9 @@ const result = await ProductCollection.find();
 return result;
 }
 
+
+
+
 //* Get a product by ID
 // const getProductById = async (_id: string) => {
 //     const result = await ProductCollection.findById(_id);
@@ -58,10 +61,25 @@ const deleteProduct = async (id: string) => {
     return result;
   };
 
+
+
+
+//* Search for products by term
+const searchProducts = async (searchTerm: string) => {
+  const regex = new RegExp(searchTerm, 'i'); 
+  const result = await ProductCollection.find({
+    name: { $regex: regex },
+    
+  });
+  return result;
+};
+
+
 export const ProductServices = {
     createProduct,
     getAllProducts,
     getProductById,
     updateProduct,
     deleteProduct,
+    searchProducts,
 }
