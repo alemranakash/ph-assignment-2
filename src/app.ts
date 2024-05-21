@@ -1,3 +1,5 @@
+//*app.ts
+
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import { ProductRoutes } from './app/modules/products/product.route';

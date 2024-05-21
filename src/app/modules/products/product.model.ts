@@ -1,3 +1,6 @@
+//* product.model.ts
+
+
 import { Schema, model } from 'mongoose';
 import { Inventory, Product, Variant } from './product.interface';
 
