@@ -1,7 +1,7 @@
 //* product.route.ts
 
 import express, { Request, Response } from 'express';
-import { ProductController } from './product.controller';
+import {  ProductController } from './product.controller';
 
 const router = express.Router();
 
@@ -19,6 +19,9 @@ router.put('/:productId', ProductController.updateProduct);
 
 //* Delete method to delete a product by ID
 router.delete('/:productId', ProductController.deleteProduct);
+
+
+
 
 
 
