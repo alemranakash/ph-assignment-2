@@ -1,7 +1,7 @@
 //order.route.ts
 
 
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { OrderController } from './order.controller';
 import { validateRequest } from './order.validateRequest';
 import { orderSchema } from './order.validation';

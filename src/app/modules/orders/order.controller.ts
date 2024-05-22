@@ -15,7 +15,7 @@ const createOrder = async (req: Request, res: Response) => {
       message: 'Order created successfully!',
       data: result,
     });
-  } catch (err: any) {
+  } catch (err: any) {  // eslint-disable-line @typescript-eslint/no-explicit-any
     res.status(400).json({
       success: false,
       message: err.message,
@@ -52,7 +52,7 @@ const createOrder = async (req: Request, res: Response) => {
                 data: result,
             });
         }
-    } catch (err: any) {
+    } catch (err: any) {  // eslint-disable-line @typescript-eslint/no-explicit-any
         res.status(500).json({
             success: false,
             message: 'Something went wrong',

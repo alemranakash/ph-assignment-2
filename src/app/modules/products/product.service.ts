@@ -22,10 +22,7 @@ const getProducts = async (searchTerm?: string) => {
 
 
 //* Get a product by ID
-// const getProductById = async (_id: string) => {
-//     const result = await ProductCollection.findById(_id);
-//     return result;
-//   };
+
 
 const getProductById = async (id: string) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {

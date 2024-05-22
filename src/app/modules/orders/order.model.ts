@@ -1,13 +1,13 @@
 //*order.model.ts
 
-import mongoose, { Schema, model } from 'mongoose';
+import mongoose, {  model } from 'mongoose';
 import { Order } from './order.interface';
 
 const orderSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    match: /.+\@.+\..+/,
+    match: /.+@.+\..+/,
   },
   productId: {
     type: String,

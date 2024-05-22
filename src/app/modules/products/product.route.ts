@@ -1,6 +1,6 @@
 //* product.route.ts
 
-import express, { Request, Response } from 'express';
+import express from 'express';
 import {  ProductController } from './product.controller';
 import { validateRequest } from './product.validateRequest';
 import { productSchema } from './product.validation';

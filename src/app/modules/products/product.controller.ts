@@ -34,7 +34,7 @@ const getAllProducts = async (req: Request, res: Response) => {
         data: result,
       });
     }
-  } catch (err: any) {
+  } catch (err: any) {  // eslint-disable-line @typescript-eslint/no-explicit-any
     res.status(500).json({
       success: false,
       message: 'Something went wrong',
@@ -60,7 +60,7 @@ const getProductById = async (req: Request, res: Response) => {
         message: 'Product not found',
       });
     }
-  } catch (err: any) {
+  } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
     res.status(500).json({
       success: false,
       message: 'Something went wrong',
@@ -87,7 +87,7 @@ const updateProduct = async (req: Request, res: Response) => {
         message: 'Product not found',
       });
     }
-  } catch (err: any) {
+  } catch (err: any) {  // eslint-disable-line @typescript-eslint/no-explicit-any
     res.status(500).json({
       success: false,
       message: 'Something went wrong',
@@ -113,7 +113,7 @@ const deleteProduct = async (req: Request, res: Response) => {
         message: 'Product not found',
       });
     }
-  } catch (err: any) {
+  } catch (err: any) {  // eslint-disable-line @typescript-eslint/no-explicit-any
     res.status(500).json({
       success: false,
       message: 'Something went wrong',
