@@ -3,8 +3,11 @@
 import { Request, Response } from "express";
 import { OrderServices } from "./order.service";
 
-//* Post method to create a new order
+
+
+//* Post method to create a new order */
 const createOrder = async (req: Request, res: Response) => {
+  try {
     const orderData = req.body;
     const result = await OrderServices.createOrder(orderData);
     res.json({
@@ -12,7 +15,13 @@ const createOrder = async (req: Request, res: Response) => {
       message: 'Order created successfully!',
       data: result,
     });
-  };
+  } catch (err: any) {
+    res.status(400).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
   
   //* Get method to get all order
   const getAllOrders = async (req: Request, res: Response) => {
