@@ -11,26 +11,21 @@ const createOrder = async (payload: Order) => {
   };
   
   //* Get all order */
-  const getAllOrders = async () => {
-    const result = await OrderCollection.find();
-    return result;
-  };
+ 
+  const getOrders = async (email?: string) => {
+    if (email) {
+        return await OrderCollection.find({ email });
+    }
+    return await OrderCollection.find();
+};
   
 
 
-//   //* Search for products by email
-// const searchOrders = async (searchEmail: string) => {
-//     const regex = new RegExp(searchEmail, 'i');
-//     const result = await OrderCollection.find({
-//       email: { $regex: regex },
-//     });
-//     return result;
-//   };
-  
+
 
 
   export const OrderServices = {
     createOrder,
-    getAllOrders,
+    getOrders
 
   };

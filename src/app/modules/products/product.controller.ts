@@ -16,30 +16,18 @@ const createProduct = async (req: Request, res: Response) => {
 };
 
 //* Get method to get all products
-
 const getAllProducts = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
-    let result;
+    const result = await ProductServices.getProducts(searchTerm);
 
-    if (searchTerm) {
-      result = await ProductServices.searchProducts(searchTerm);
-
-      if (result.length === 0) {
-        res.status(500).json({
-          success: false,
-          message: `No products matching search term '${searchTerm}' found!`,
-          data: null,
-        });
-      } else {
-        res.status(200).json({
-          success: true,
-          message: `Products matching search term '${searchTerm}' fetched successfully!`,
-          data: result,
-        });
-      }
+    if (searchTerm && result.length === 0) {
+      res.status(404).json({
+        success: false,
+        message: `No products matching search term '${searchTerm}' found!`,
+        data: null,
+      });
     } else {
-      result = await ProductServices.getAllProducts();
       res.status(200).json({
         success: true,
         message: 'Products fetched successfully!',

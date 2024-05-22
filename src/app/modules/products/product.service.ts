@@ -12,10 +12,14 @@ const createProduct = async (payload: Product) => {
 };
 
 //* Get all products */
-const getAllProducts = async () => {
-  const result = await ProductCollection.find();
-  return result;
+const getProducts = async (searchTerm?: string) => {
+  if (searchTerm) {
+    const regex = new RegExp(searchTerm, 'i');
+    return await ProductCollection.find({ name: { $regex: regex } });
+  }
+  return await ProductCollection.find();
 };
+
 
 //* Get a product by ID
 // const getProductById = async (_id: string) => {
@@ -52,23 +56,11 @@ const deleteProduct = async (id: string) => {
   return result;
 };
 
-//* Search for products by term
-const searchProducts = async (searchTerm: string) => {
-  const regex = new RegExp(searchTerm, 'i');
-  const result = await ProductCollection.find({
-    name: { $regex: regex },
-  });
-  return result;
-};
-
-
 
 export const ProductServices = {
   createProduct,
-  getAllProducts,
   getProductById,
   updateProduct,
   deleteProduct,
-  searchProducts,
- 
+  getProducts,
 };
